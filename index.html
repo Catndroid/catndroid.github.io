@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="mobile-web-app-capable" content="yes">
+    <!-- 禁止缩放的关键设置 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    <!-- 额外的缩放禁止设置 -->
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    
+    <link rel="icon" type="image/jpg" href="./favicon.jpg">
+    <style>
+      html {
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+      }
+    </style>
+    <meta name="theme-color" content="#000000">
+    <title>catmy</title>
+    <!-- MDUI CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/mdui@1.0.2/dist/css/mdui.min.css">
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+
+<body class="mdui-appbar-with-toolbar">
+  <div class="mdui-appbar mdui-appbar-fixed mdui-appbar-perfect-change" style="position:fixed; top:0; left:0; right:0; height:56px; z-index:9999;">
+    <div class="mdui-toolbar">
+      <a href="javascript:;" class="mdui-btn mdui-btn-icon">
+      <i class="mdui-icon material-icons">menu</i>
+    </a>
+    <a href="javascript:;" class="mdui-typo-title">苗子的Blog</a>
+    <div class="mdui-toolbar-spacer"></div>
+    <a href="javascript:;" class="mdui-btn mdui-btn-icon">
+      <i class="mdui-icon material-icons">search</i>
+    </a>
+    <a href="javascript:;" class="mdui-btn mdui-btn-icon">
+      <i class="mdui-icon material-icons">refresh</i>
+    </a>
+    <a href="javascript:;" class="mdui-btn mdui-btn-icon">
+      <i class="mdui-icon material-icons">more_vert</i>
+    </a>
+    </div>
+  </div>
+  <div class="auto-layout">
+    <img src="./img/hands.png" style="width: 100%; height: auto;"/>
+    <br>
+    <h1 style="font-size: 2em;
+    margin: 10px 0;
+    letter-spacing: 2px;
+    color: #fff;
+    text-shadow:
+        0 0 4px  #fff,
+        0 0 10px #fff,
+        0 0 20px #FF9900,
+        0 0 40px #fff,
+        0 0 60px #FF9999,
+        0 0 80px #fff,
+        0 0 100px #fff,
+        0 0 120px #fff;
+        text-align: center;
+">姥爷苗子</h1>
+    <h1 class="GhastlyPanic" style="font-size: 2em;
+    margin: 10px 0;
+    letter-spacing: 2px;
+    color: #fff;
+    text-shadow:
+        0 0 4px  #fff,
+        0 0 10px #fff,
+        0 0 20px #FF0000,
+        0 0 40px #0ff,
+        0 0 60px #FF0000;
+        text-align: center;
+">catmy</h1>
+    <br>
+<div id="md-pool" style="display:none;">
+<!--part-->
+这里什么也没有，要不然换个地方玩玩?
+</div>
+
+<div id="md-target"><!--The content is being rendered here.--></div>
+
+    <div class="parts">
+        <h2>相关链接</h2>
+        您可以在这里我的所有踪迹。
+        <br>
+        <a href="//search.aznb.top/">易搜搜索</a>
+        <br>
+        <a href="//outside.openadsdk.top/">跨站网络加速服务</a>
+        <br>
+        <a href="//aznb.top/">anzhuo的垃圾桶</a>
+        <br>
+        <a href="//www.1145117.xyz/">听眠 MelodySerene的网站</a>
+	</div>
+    
+    <br>
+    <p style="text-align:center; color:#999;"><a href="https://v.kuaishou.com/JIuRsb78">联系站长</a><br>自信用TypeScript</p>
+    <h1 class="GhastlyPanic" style="font-size: 2em;
+    margin: 10px 0;
+    letter-spacing: 2px;
+    color: #fff;
+    text-shadow:
+        0 0 4px  #ffaa00,
+        0 0 10px #ffaa00,
+        0 0 20px #FFF,
+        0 0 40px #FFF,
+        0 0 60px #ffaa00;
+        text-align: center;
+">By Cat, qcazhq Design</h1>
+    <br>
+    <br>
+  </div>
+<!-- MDUI JavaScript -->
+<script src="https://unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script>
+
+<!-- Markdown 远程加载扩展 -->
+<script src="./js/tool-markdown-provider-index.js"></script>
+<!-- 特殊 Markdown 解析器（支持混写 HTML & 分段） -->
+<script src="./js/tool-analysis-markdown.js"></script>
+<!-- 滚动条 -->
+<script>(function () {const cfg = {width: 6,marginTop: '12vh',marginRight: 16,trackHeight: 10,fadeInDur: 150,fadeOutDur: 150,idleTime: 800};let wrapper = null;let fill = null;let idleTimer = 0;function init() {wrapper = document.createElement('div');Object.assign(wrapper.style, {position: 'fixed',top: cfg.marginTop,right: cfg.marginRight + 'px',width: cfg.width + 'px',height: cfg.trackHeight + 'vh',background: '#666',borderRadius: (cfg.width / 2) + 'px',opacity: '0',pointerEvents: 'none',transition: `opacity ${cfg.fadeInDur}ms ease`,zIndex: '9999',overflow: 'hidden'});fill = document.createElement('div');Object.assign(fill.style, {position: 'absolute',top: '0',left: '0',width: '100%',height: '0%',background: '#FFF',borderRadius: (cfg.width / 2) + 'px'});wrapper.appendChild(fill);document.body.appendChild(wrapper);}function onScroll() {const ratio = window.pageYOffset / (document.documentElement.scrollHeight - window.innerHeight);fill.style.height = (ratio * 100) + '%';clearTimeout(idleTimer);wrapper.style.opacity = '1';idleTimer = setTimeout(() => wrapper.style.opacity = '0', cfg.idleTime);}if (document.readyState === 'loading') {document.addEventListener('DOMContentLoaded', init);} else init();window.addEventListener('scroll', onScroll, { passive: true });})();</script>
+</body>
+</html>

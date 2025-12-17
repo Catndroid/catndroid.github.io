@@ -1,0 +1,15 @@
+/*By https://codepen.io/Mikhail-Bespalov/ thanksgiving !*/
+.lqglass {
+  border-radius:50%;
+  background:rgba(255,255,255,.08);
+  border: 2px solid transparent;
+  box-shadow:0 0 0 2px rgba(255,255,255,0.6),0 16px 32px rgba(0,0,0,0.12);
+  backdrop-filter:url(#frosted);
+  -webkit-backdrop-filter:url(#frosted);
+  display:grid;
+  place-items:center;
+  cursor:pointer;
+  outline:0;
+  color:#fff;
+  font-size:4vh;
+}
