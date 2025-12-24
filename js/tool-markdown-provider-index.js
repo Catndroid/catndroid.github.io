@@ -1,5 +1,5 @@
 (function(){
-  const mdUrl = '/article/' + 'index.md';          // 固定读取网站根下的 index.md
+  const mdUrl = '/article/' + '/index.md?v=' + Date.now();
   fetch(mdUrl)
     .then(r => {
       if(!r.ok) throw new Error('index.md 不存在或网络错误');
