@@ -1,5 +1,5 @@
 /*质感Blog CSS
-25/12/13 11:11*/
+25/12/24 9:44pm*/
 
 @font-face {
     font-family: 'Texture-Sans';
@@ -82,7 +82,7 @@ body::after {
 .parts {
     max-width: 85%;
     min-width: 300px;
-    margin: 0 auto;
+    margin: auto;
     background: rgba(250, 250, 250, 0.05);
     padding: 20px;
     padding-top: 5px;
