@@ -22,6 +22,10 @@
 <a href="./article.html?article=welcome.md">欢迎使用 **质感文章**</a>
 
 <!--part-->
+## News
+<a href="https://view.inews.qq.com/k/20251223A01MP300?web_channel=wap&no-redirect=1">12月23日凌晨，快手(01024.HK)直播频道遭遇了罕见的“至暗时刻”。自22日深夜起，该平台直播间大面积失控，随后官方紧急切断直播功能，引发行业与资本市场的关注。</a>
+
+<!--part-->
 <div style="text-align:center">
 没啥了
 </div>
