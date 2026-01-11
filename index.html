@@ -47,7 +47,8 @@
     </div>
   </div>
   <div class="auto-layout">
-    <img src="./img/hands.png" style="width: 100%; height: auto;"/>
+    <!--<img src="./img/hands.png" style="width: 100%; height: auto;"/>-->
+	<img src="https://youke3.picui.cn/s1/2026/01/11/696327d641878.png" style="width: 100%; height: auto;"/>
     <br>
     <h1 style="font-size: 2em;
     margin: 10px 0;
@@ -124,4 +125,5 @@
 <!-- 滚动条 -->
 <script>(function () {const cfg = {width: 6,marginTop: '12vh',marginRight: 16,trackHeight: 10,fadeInDur: 150,fadeOutDur: 150,idleTime: 800};let wrapper = null;let fill = null;let idleTimer = 0;function init() {wrapper = document.createElement('div');Object.assign(wrapper.style, {position: 'fixed',top: cfg.marginTop,right: cfg.marginRight + 'px',width: cfg.width + 'px',height: cfg.trackHeight + 'vh',background: '#666',borderRadius: (cfg.width / 2) + 'px',opacity: '0',pointerEvents: 'none',transition: `opacity ${cfg.fadeInDur}ms ease`,zIndex: '9999',overflow: 'hidden'});fill = document.createElement('div');Object.assign(fill.style, {position: 'absolute',top: '0',left: '0',width: '100%',height: '0%',background: '#FFF',borderRadius: (cfg.width / 2) + 'px'});wrapper.appendChild(fill);document.body.appendChild(wrapper);}function onScroll() {const ratio = window.pageYOffset / (document.documentElement.scrollHeight - window.innerHeight);fill.style.height = (ratio * 100) + '%';clearTimeout(idleTimer);wrapper.style.opacity = '1';idleTimer = setTimeout(() => wrapper.style.opacity = '0', cfg.idleTime);}if (document.readyState === 'loading') {document.addEventListener('DOMContentLoaded', init);} else init();window.addEventListener('scroll', onScroll, { passive: true });})();</script>
 </body>
+
 </html>
