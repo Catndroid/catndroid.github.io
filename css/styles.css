@@ -1,13 +1,15 @@
 /*质感Blog CSS
 25/12/24 9:44pm*/
 
+/*Change something*/
+
 @font-face {
     font-family: 'Texture-Sans';
     src: url('/texture/TextFonts.ttf') format('truetype');
 }
 @font-face {
     font-family: 'TextureMoji';
-    src: url('/texture/TextureMojis.ttf') format('truetype');
+    src: url('/font/AppleColorEmoji-Linux.ttf') format('truetype');
 }
 @font-face {
     font-family: 'GhastlyPanic';
