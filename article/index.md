@@ -1,12 +1,12 @@
 <!--part-->
 ## 苗子的Blog
 欢迎访问！
-在这里开始记录我的生活烟火 也是世界中的尘埃。
+在这里记录日记 为自己留下进步的脚印。
 祝你天天开心<span class="emoji">❤️</span> 想想明天做什么<span class="emoji">🤔</span>
 
 <!--part-->
 <h2>我是谁?</h2>
-苗
+
 
 <!--part-->
 ## Products
