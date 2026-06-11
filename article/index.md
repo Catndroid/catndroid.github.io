@@ -35,3 +35,5 @@ Powered by <a href="https://zhian.org/">Zhian Team</a>
 <a href="https://www.minearm.org">MiNeArM_RpM</a>
 <br>
 <a href="https://liyang.anzhu0.cn/">Liyang</a>
+<br>
+<a href="https://developers.catndroid.cn/">Catndroid's Developers Community</a>
