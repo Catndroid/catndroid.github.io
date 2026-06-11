@@ -5,11 +5,11 @@
 
 @font-face {
     font-family: 'Texture-Sans';
-    src: url('/texture/TextFonts.ttf') format('truetype');
+    src: url('https://zhian.org/woff/PingFangSC-Regular.woff2') format('truetype');
 }
 @font-face {
-    font-family: 'TextureMoji';
-    src: url('/font/AppleColorEmoji-Linux.ttf') format('truetype');
+    font-family: 'Texture-Sans';
+    src: url('https://zhian.org/woff/PingFangSC-Regular.woff2') format('truetype');
 }
 @font-face {
     font-family: 'GhastlyPanic';
