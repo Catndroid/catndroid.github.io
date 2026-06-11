@@ -87,10 +87,11 @@ body::after {
     background: rgba(250, 250, 250, 0.05);
     padding: 20px;
     padding-top: 5px;
-    padding-bottom: 5px;
+    /* padding-bottom: 5px; */
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     margin-top: 20px;
+    word-wrap:break-word;
 }
 
 .color-blue {
