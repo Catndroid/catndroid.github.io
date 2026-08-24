@@ -1,13 +1,6 @@
 <!--part-->
-## Catndroid的Blog
-欢迎访问！
-在这里记录日记 为自己留下进步的脚印。
-祝你天天开心<span class="emoji">❤️</span> 想想明天做什么<span class="emoji">🤔</span>
-
-<!--part-->
-<h2>我是谁?</h2>
-一个码农，爱捣鼓点奇怪的东西
-可以叫我Cat 我在致安团队等着你
+## Catndroid的余地
+人类已经把自己“弹”出了摇篮，无论前面是星辰还是深渊，都绝不回头了。
 
 <!--part-->
 ## Log: 2026年6月11日
@@ -26,8 +19,8 @@ https://www.youtube.com/@zhianteam/
 Powered by <a href="https://zhian.org/">Zhian Team</a>
 
 <!--part-->
-<h2>相关链接与友情链接</h2>
-您可以在这里我的所有踪迹。
+<h2>链接和连接</h2>
+我的所有踪迹。
 <a href="https://zhian.org/">致安团队门户网站</a>
 <br>
 <a href="https://aznb.top/">anzhuo的垃圾桶</a>
