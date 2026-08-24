@@ -173,12 +173,49 @@ pre {
         scroll-behavior: smooth;
         -webkit-overflow-scrolling: touch;
       }
+
+      /* ============================================================
+         站点通用组件（由原本散落的行内 style 标准化而来，样式保持不变）
+         ============================================================ */
+      .site-appbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 56px;
+        z-index: 9999;
+      }
+
+      .site-hero {
+        width: 100%;
+      }
+      .site-hero--old { height: 300px; }
+
+      .site-title {
+        font-size: 2em;
+        margin: 10px 0;
+        letter-spacing: 2px;
+        color: #fff;
+        text-align: center;
+      }
+      .site-title--plain-orange { color: #FF9900; }
+      .site-title--plain-red { color: #FF0000; }
+      .site-title--plain-amber { color: #ffaa00; }
+
+      .site-footer {
+        text-align: center;
+        color: #999;
+      }
+
+      #md-pool {
+        display: none;
+      }
     </style>
 
 </head>
 
 <body class="mdui-appbar-with-toolbar">
-  <div class="mdui-appbar mdui-appbar-fixed mdui-appbar-perfect-change" style="position:fixed; top:0; left:0; right:0; height:56px; z-index:9999;">
+  <div class="mdui-appbar mdui-appbar-fixed mdui-appbar-perfect-change site-appbar">
     <div class="mdui-toolbar">
       <a href="javascript:;" class="mdui-btn mdui-btn-icon">
       <i class="mdui-icon material-icons">menu</i>
@@ -197,22 +234,12 @@ pre {
     </div>
   </div>
   <div class="auto-layout">
-    <img src="./img/hands.png" style="width: 100%; height: 300px;"/>
+    <img src="./img/hands.png" class="site-hero site-hero--old"/>
     <br>
-    <h1 style="font-size: 2em;
-    margin: 10px 0;
-    letter-spacing: 2px;
-    color: #FF9900;
-        text-align: center;
-">姥爷苗子</h1>
-    <h1 class="GhastlyPanic" style="font-size: 2em;
-    margin: 10px 0;
-    letter-spacing: 2px;
-    color: #FF0000;
-        text-align: center;
-">catmy</h1>
+    <h1 class="site-title site-title--plain-orange">姥爷苗子</h1>
+    <h1 class="GhastlyPanic site-title site-title--plain-red">catmy</h1>
     <br>
-<div id="md-pool" style="display:none;">
+<div id="md-pool">
 <!--part-->
 这里什么也没有，要不然换个地方玩玩?
 </div>
@@ -233,13 +260,8 @@ pre {
 	</div>
     
     <br>
-    <p style="text-align:center; color:#999;"><a href="https://v.kuaishou.com/JIuRsb78">联系站长</a><br>自信用TypeScript</p>
-    <h1 class="GhastlyPanic" style="font-size: 2em;
-    margin: 10px 0;
-    letter-spacing: 2px;
-    color: #ffaa00;
-        text-align: center;
-">By Cat, qcazhq Design</h1>
+    <p class="site-footer"><a href="https://v.kuaishou.com/JIuRsb78">联系站长</a><br>自信用TypeScript</p>
+    <h1 class="GhastlyPanic site-title site-title--plain-amber">By Cat, qcazhq Design</h1>
     <br>
     <br>
   </div>

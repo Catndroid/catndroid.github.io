@@ -172,3 +172,104 @@ p {
 pre {
     max-width: 10%;
 }
+
+/* ============================================================
+   站点通用组件（由原本散落的行内 style 标准化而来，样式保持不变）
+   ============================================================ */
+
+html {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* 顶部栏（原行内：position:fixed; top:0; left:0; right:0; height:56px; z-index:9999;） */
+.site-appbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 56px;
+    z-index: 9999;
+}
+
+/* 页首大图：基础宽度铺满 */
+.site-hero {
+    width: 100%;
+}
+/* 首页：500px */
+.site-hero--home { height: 500px; }
+/* 文章页：auto */
+.site-hero--article { height: auto; }
+/* 旧设备版：300px */
+.site-hero--old { height: 300px; }
+
+/* 发光标题：共享基础样式（原行内：font-size:2em; margin:10px 0; letter-spacing:2px;
+   color:#fff; text-align:center;） */
+.site-title {
+    font-size: 2em;
+    margin: 10px 0;
+    letter-spacing: 2px;
+    color: #fff;
+    text-align: center;
+}
+
+/* 首页主标题：8em + 细字重 + 红青霓虹 */
+.site-title--home {
+    font-size: 8em;
+    font-weight: 100;
+    text-shadow:
+        0 0 4px  #fff,
+        0 0 10px #fff,
+        0 0 20px #FF0000,
+        0 0 40px #0ff,
+        0 0 60px #FF0000;
+}
+
+/* 红青霓虹（2em 版本） */
+.site-title--red-cyan {
+    text-shadow:
+        0 0 4px  #fff,
+        0 0 10px #fff,
+        0 0 20px #FF0000,
+        0 0 40px #0ff,
+        0 0 60px #FF0000;
+}
+
+/* 橙色霓虹 */
+.site-title--orange {
+    text-shadow:
+        0 0 4px  #ffaa00,
+        0 0 10px #ffaa00,
+        0 0 20px #FFF,
+        0 0 40px #FFF,
+        0 0 60px #ffaa00;
+}
+
+/* 橙白多层霓虹 */
+.site-title--white-orange {
+    text-shadow:
+        0 0 4px  #fff,
+        0 0 10px #fff,
+        0 0 20px #FF9900,
+        0 0 40px #fff,
+        0 0 60px #FF9999,
+        0 0 80px #fff,
+        0 0 100px #fff,
+        0 0 120px #fff;
+}
+
+/* 纯色无阴影（旧设备版） */
+.site-title--plain-orange { color: #FF9900; }
+.site-title--plain-red { color: #FF0000; }
+.site-title--plain-amber { color: #ffaa00; }
+
+/* 页脚提示文字（原行内：text-align:center; color:#999;） */
+.site-footer {
+    text-align: center;
+    color: #999;
+}
+
+/* Markdown 隐藏源池 */
+#md-pool {
+    display: none;
+}
