@@ -7,10 +7,12 @@
     font-family: 'Texture-Sans';
     src: url('https://zhian.org/woff/PingFangSC-Regular.woff2') format('truetype');
 }
+
 @font-face {
     font-family: 'Texture-Sans';
     src: url('https://zhian.org/woff/PingFangSC-Regular.woff2') format('truetype');
 }
+
 @font-face {
     font-family: 'GhastlyPanic';
     src: url('/font/GhastlyPanic.ttf') format('truetype');
@@ -19,9 +21,11 @@
 .app {
     font-family: 'Texture-Sans', sans-serif;
 }
+
 .emoji {
     font-family: 'TextureMoji';
 }
+
 body {
     padding: 0px;
     margin: 0px;
@@ -72,8 +76,8 @@ body::after {
     right: 0;
     height: auto;
     background: linear-gradient(to bottom,
-      rgba(0,0,0,1) 0%,
-      rgba(0,0,0,0) 100%);
+            rgba(0, 0, 0, 1) 0%,
+            rgba(0, 0, 0, 0) 100%);
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
     pointer-events: none;
@@ -91,7 +95,13 @@ body::after {
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     margin-top: 20px;
-    word-wrap:break-word;
+    word-wrap: break-word;
+}
+
+img {
+    -webkit-mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 100%);
+    mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 100%);
+    object-fit: cover;
 }
 
 .color-blue {
@@ -159,6 +169,6 @@ p {
     line-height: 1.5;
 }
 
-pre { 
+pre {
     max-width: 10%;
 }
