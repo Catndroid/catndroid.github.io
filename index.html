@@ -2,6 +2,45 @@
 <html lang="zh-CN">
 
 <head>
+    <!-- SEO -->
+    <link rel="canonical" href="https://catndroid.cn/" />
+    <meta name="description" content="做自己的博客 热点新闻 科技时报" />
+    <meta name="keywords" content="热点新闻 科技时报" />
+    <meta name="author" content="2233的不毛之地" />
+    <meta name="robots" content="index, follow" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+    <!-- Social -->
+    <meta property="og:title" content="2233的不毛之地" />
+    <meta property="og:description" content="" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://catndroid.cn/" />
+    <meta property="og:image" content="http://q1.qlogo.cn/g?b=qq&nk=484603451&s=100" />
+    <meta property="og:locale" content="zh_CN" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="2233的不毛之地" />
+    <meta name="twitter:description" content="做自己的博客 热点新闻" />
+    <meta name="twitter:image" content="http://q1.qlogo.cn/g?b=qq&nk=484603451&s=100" />
+
+    <!-- Mobile Web App -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="不毛之地" />
+    <link rel="icon" href="http://q1.qlogo.cn/g?b=qq&nk=484603451&s=100" />
+    <link rel="apple-touch-icon" href="http://q1.qlogo.cn/g?b=qq&nk=484603451&s=100" />
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "不毛之地",
+            "url": "https://catndroid.cn/",
+            "logo": "http://q1.qlogo.cn/g?b=qq&nk=484603451&s=100"
+        }
+        </script>
+
+    <link rel="icon" type="image/jpeg" href="http://q1.qlogo.cn/g?b=qq&nk=484603451&s=100">
   <meta charset="UTF-8">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="viewport"
@@ -11,11 +50,8 @@
   <meta name="HandheldFriendly" content="true" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-
-  <link rel="icon" type="image/jpg" href="./favicon.jpg">
   <meta name="theme-color" content="#000000">
   <title>CATMY</title>
-  <!-- MDUI CSS -->
   <link rel="stylesheet" href="https://unpkg.com/mdui@1.0.2/dist/css/mdui.min.css">
   <link rel="stylesheet" href="./css/styles.css">
 </head>
@@ -23,7 +59,7 @@
 <body class="mdui-appbar-with-toolbar">
   <div class="mdui-appbar mdui-appbar-fixed mdui-appbar-perfect-change site-appbar">
     <div class="mdui-toolbar">
-      <a href="javascript:;" class="mdui-typo-title">不毛之地</a>
+      <a href="javascript:;" class="mdui-typo-title">2233的不毛之地</a>
     </div>
   </div>
       <img src="./img/hands.png" class="site-hero site-hero--home" />
@@ -37,8 +73,17 @@
       <noscript>请启用JavaScript</noscript>
     </div>
 
+    <!-- 每日新闻 -->
+    <section class="news" id="news-section">
+      <div class="news-head">
+        <h2 class="news-title">每日新闻</h2>
+        <span class="news-source">来自 <a href="https://sspai.com" target="_blank" rel="noopener">少数派</a></span>
+        <button id="news-refresh" class="news-refresh" type="button" title="刷新">↻</button>
+      </div>
+      <div id="news-list" class="news-list"><!-- news here --></div>
+    </section>
+    
     <div id="md-target"><!--The content is being rendered here.--></div>
-
     <br>
     <p class="site-footer"><a href="https://v.kuaishou.com/JIuRsb78">联系站长</a><br>自信用TypeScript</p>
     <h1 class="GhastlyPanic site-title site-title--orange">qcazhq Design</h1>
@@ -49,6 +94,7 @@
   <script src="https://unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script>
   <script src="./js/tool-markdown-provider-index.js"></script>
   <script src="./js/tool-analysis-markdown.js"></script>
+  <script src="./js/tool-news.js"></script>
   <script>(function () { const cfg = { width: 6, marginTop: '12vh', marginRight: 16, trackHeight: 10, fadeInDur: 150, fadeOutDur: 150, idleTime: 800 }; let wrapper = null; let fill = null; let idleTimer = 0; function init() { wrapper = document.createElement('div'); Object.assign(wrapper.style, { position: 'fixed', top: cfg.marginTop, right: cfg.marginRight + 'px', width: cfg.width + 'px', height: cfg.trackHeight + 'vh', background: '#666', borderRadius: (cfg.width / 2) + 'px', opacity: '0', pointerEvents: 'none', transition: `opacity ${cfg.fadeInDur}ms ease`, zIndex: '9999', overflow: 'hidden' }); fill = document.createElement('div'); Object.assign(fill.style, { position: 'absolute', top: '0', left: '0', width: '100%', height: '0%', background: '#FFF', borderRadius: (cfg.width / 2) + 'px' }); wrapper.appendChild(fill); document.body.appendChild(wrapper); } function onScroll() { const ratio = window.pageYOffset / (document.documentElement.scrollHeight - window.innerHeight); fill.style.height = (ratio * 100) + '%'; clearTimeout(idleTimer); wrapper.style.opacity = '1'; idleTimer = setTimeout(() => wrapper.style.opacity = '0', cfg.idleTime); } if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', init); } else init(); window.addEventListener('scroll', onScroll, { passive: true }); })();</script>
 </body>
 

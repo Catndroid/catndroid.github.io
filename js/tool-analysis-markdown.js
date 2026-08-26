@@ -1,93 +1,95 @@
-/* ---------- 工具函数 ---------- */
-const escapeHtml = str => str
-  .replace(/&/g,'&amp;')
-  .replace(/</g,'&lt;')
-  .replace(/>/g,'&gt;');
+/* ============================================================
+ * Markdown 渲染模块 —— 基于 marked v12（本地 js/marked.min.js）
+ *
+ * 旧版为手写解析器，无法完整渲染标准 Markdown；
+ * 现改用 marked：支持 GFM、表格、任务列表、代码块、混写 HTML 等。
+ *
+ * 保留原接口：renderMarkdown()
+ *   - 读取 #md-pool 中的 Markdown 源码（纯文本）
+ *   - 渲染到 #md-target
+ *
+ * 分段语法：<!--part--> 会把文章拆成多个 <div class="parts"> 卡片
+ * ============================================================ */
+(function () {
+  'use strict';
 
-/* ---------- emoji 表 ---------- */
-const emojiMap = {
-  smile:'😄', heart:'❤️', fire:'🔥', ok:'👌',
-  joy:'😂', sob:'😭', yum:'😋', kiss:'😘',
-  tada:'🎉',thumbsup:'👍',wave:'👋'
-};
-
-/* ---------- 行内 Markdown 解析（不破坏已有 HTML 标签） ---------- */
-function parseInline(s){
-  /* 已保护好的标签占位符 */
-  const holders = [];
-  let idx = 0;
-  const protector = str => `{@@${idx++}@@}`;
-  const restore = text => {
-    holders.forEach(h => text = text.replace(h.holder, h.txt));
-    return text;
+  /* ---------- emoji 表（:xxx: 语法） ---------- */
+  const emojiMap = {
+    smile: '😄', heart: '❤️', fire: '🔥', ok: '👌',
+    joy: '😂', sob: '😭', yum: '😋', kiss: '😘',
+    tada: '🎉', thumbsup: '👍', wave: '👋'
   };
 
-  /* 1. 保护已有 HTML 标签 */
-  s = s.replace(/<[^>]+>/g, tag => {
-    const h = protector();
-    holders.push({holder:h, txt:tag});
-    return h;
-  });
-
-  /* 2. 行内语法 */
-  s = s.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" style="max-width:100%">');
-  s = s.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank">$1</a>');
-  s = s.replace(/\*\*\*([^*]+)\*\*\*/g, '<strong><em>$1</em></strong>');
-  s = s.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
-  s = s.replace(/\*([^*]+)\*/g, '<em>$1</em>');
-  s = s.replace(/~~([^~]+)~~/g, '<del>$1</del>');
-  s = s.replace(/`([^`]+)`/g, '<code>$1</code>');
-  s = s.replace(/:([a-z]+):/g, (_,k) => {
-    const e = emojiMap[k];
-    return e ? `<span class="emoji">${e}</span>` : `:${k}:`;
-  });
-
-
-  /* 3. 还原标签 */
-  return restore(s);
-}
-
-/* ---------- 主解析入口 ---------- */
-function parseSpecialMd(md){
-  const lines = md.split(/\n/);
-  let buffer = '';
-  let html   = '';
-  const flush = () => {
-    if(!buffer.trim()) return;
-    /* 对非 HTML 块简单处理：段落、标题、列表 */
-    let block = buffer
-      .replace(/^### (.*)/gm, '<h3>$1</h3>')
-      .replace(/^## (.*)/gm,  '<h2>$1</h2>')
-      .replace(/^# (.*)/gm,   '<h1>$1</h1>')
-      .replace(/^\* (.+)/gm,  '<li>$1</li>')
-      .replace(/^(\s*<li>.*<\/li>)+/gim, m=>`<ul>${m}</ul>`)
-      .replace(/\n{2,}/g, '\n</p><p>')
-      .replace(/^([^<].*)/gm, '<p>$1</p>');
-    /* 行内再跑一次 */
-    block = block.split(/(<[^>]+>)/).map(c=> c.startsWith('<')? c : parseInline(c)).join('');
-    html += `<div class="parts">${block}</div>`;
-    buffer = '';
-  };
-
-  for(const line of lines){
-    if(line.trim() === '<!--part-->'){ flush(); continue; }
-    buffer += line + '\n';
+  /* 在文本节点里替换 :xxx: 为 emoji（自动跳过代码块/行内代码） */
+  function replaceEmojiInTextNodes(root) {
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+    const nodes = [];
+    while (walker.nextNode()) nodes.push(walker.currentNode);
+    nodes.forEach(node => {
+      if (node.parentElement && node.parentElement.closest('pre, code')) return;
+      node.nodeValue = node.nodeValue.replace(/:([a-z0-9_+-]+):/gi, (m, k) => emojiMap[k.toLowerCase()] || m);
+    });
   }
-  flush();
-  return html;
-}
 
-/* ---------- 渲染 ---------- */
-function renderMarkdown(){
-  const pool = document.getElementById('md-pool');
-  const target = document.getElementById('md-target');
-  if(!pool || !target) return;
-  target.innerHTML = parseSpecialMd(pool.innerHTML);
-}
+  /* 渲染后的收尾：链接新窗口打开、图片自适应宽度、emoji 处理 */
+  function postProcess(html) {
+    const wrap = document.createElement('div');
+    wrap.innerHTML = html;
 
-/* ---------- 启动 ---------- */
-if(document.readyState === 'loading'){
-  document.addEventListener('DOMContentLoaded', renderMarkdown);
-}else{
-  renderMarkdown();
-}
+    wrap.querySelectorAll('a[href]').forEach(a => {
+      a.setAttribute('target', '_blank');
+      a.setAttribute('rel', 'noopener');
+    });
+
+    wrap.querySelectorAll('img').forEach(img => {
+      img.style.maxWidth = '100%';
+      img.style.height = 'auto';
+    });
+
+    replaceEmojiInTextNodes(wrap);
+
+    return wrap.innerHTML;
+  }
+
+  /* 用 marked 渲染单个 part */
+  function renderPart(md) {
+    if (!md || !md.trim()) return '';
+    let html;
+    try {
+      html = marked.parse(md, { gfm: true, breaks: false, async: false });
+    } catch (err) {
+      console.error('[MarkdownRender] 解析失败：', err);
+      html = '<p>（这一段解析失败了，看看源文件？）</p>';
+    }
+    return postProcess(html);
+  }
+
+  /* 主解析：按 <!--part--> 分段，逐段渲染并包成 .parts 卡片 */
+  function parseSpecialMd(md) {
+    return String(md)
+      .split('<!--part-->')
+      .map(part => {
+        const body = renderPart(part);
+        return body ? `<div class="parts">${body}</div>` : '';
+      })
+      .join('');
+  }
+
+  /* 渲染入口（被 tool-markdown-provider*.js 调用） */
+  function renderMarkdown() {
+    const pool = document.getElementById('md-pool');
+    const target = document.getElementById('md-target');
+    if (!pool || !target) return;
+    target.innerHTML = parseSpecialMd(pool.textContent || '');
+  }
+
+  /* 暴露给外部脚本（原为全局函数） */
+  window.renderMarkdown = renderMarkdown;
+
+  /* 启动 */
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', renderMarkdown);
+  } else {
+    renderMarkdown();
+  }
+})();
